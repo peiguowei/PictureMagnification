@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS图片放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #demo{
+            display: block;
+            width: 400px;
+            height: 255px;
+            margin: 50px;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        #small-box{
+            position:relative;
+            z-index: 1;
+        }
+        #float-box{
+            display: none;
+            width: 160px;
+            height: 120px;
+            position: absolute;
+            background: #ffffcc;
+            border: 1px solid #ccc;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+        }
+        #mark{
+            position: absolute;
+            display: block;
+            width: 400px;
+            height: 255px;
+            background-color: #fff;
+            filter: alpha(opacity=0);/*兼容IE*/
+            opacity: 0;/*透明度*/
+            z-index: 10;/*堆叠的顺序*/
+        }
+        #big-box {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 460px;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;/*溢出的部分隐藏*/
+            border: 1px solid #ccc;
+            z-index: 1;;
+        }
+
+        #big-box img {
+            position: absolute;
+            z-index: 5
+        }
+    </style>
+    <script>
+        /*页面加载完成之后执行*/
+        window.onload=function () {
+            var demo = document.getElementById("demo");
+            var small = document.getElementById("small-box");
+            var mark = document.getElementById("mark");
+            var float = document.getElementById("float-box");
+            var big = document.getElementById("big-box");
+            var img = big.getElementsByTagName("img")[0];//返回带有指定标签名的对象的集合
+
+            //鼠标移进移出事件
+            mark.onmouseover=function () {
+                float.style.display="block";//放大镜块显示
+                big.style.display="block";//大图区显示
+            }
+            mark.onmouseout=function () {
+                float.style.display="none";//放大镜块隐藏
+                big.style.display="none";//大图区隐藏
+            }
+            //鼠标移动事件
+            mark.onmousemove=function (ev) {
+                var _event=ev||window.event //解决IE兼容问题
+
+                //放大镜块移动的left和top
+                var left=_event.clientX-demo.offsetLeft-small.offsetLeft-float.offsetWidth/2;
+                var top=_event.clientY-demo.offsetTop-small.offsetTop-float.offsetHeight/2;
+                //设置边界，防止放大镜块移出小图片
+                if(left<0){
+                    left=0;
+                }else if (left>(mark.offsetWidth-float.offsetWidth)){
+                    left=mark.offsetWidth-float.offsetWidth;
+                }
+                if (top<0){
+                    top=0;
+                }else if(top>(mark.offsetHeight-float.offsetHeight)){
+                    top=mark.offsetHeight-float.offsetHeight;
+                }
+                float.style.left=left+"px";
+                float.style.top=top+"px";
+                //大图片移动的left和top
+                //第一步 求比值 比例是一致的  （说明：移动的长度比可移动的位置）
+                var x=left/(mark.offsetWidth-float.offsetWidth);
+                var y=top/(mark.offsetHeight-float.offsetHeight);
+                //第二步 图片的位置移动  小图片鼠标的移动方向与大图片的移动方向相反 故取负值
+                //大图-大图显示块
+                img.style.left=-x*(img.offsetWidth-big.offsetWidth)+"px";
+                img.style.top=-y*(img.offsetHeight-big.offsetHeight)+"px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="demo">
+        <!--小图片块-->
+        <div id="small-box">
+            <div id="mark"></div><!--目的是解决兼容IE浏览器-->
+            <div id="float-box"></div><!--放大镜块-->
+            <img src="../static/img/small.jpg">
+        </div>
+        <!--大图片块-->
+        <div id="big-box">
+            <img src="../static/img/big.jpg">
+        </div>
+    </div>
+</body>
+</html>
