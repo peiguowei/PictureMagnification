@@ -1,2 +1,2 @@
 # PictureMagnification
-js实现图片放大
+JS实现图片放大镜
