@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片上传预览</title>
+    <style type="text/css">
+        body{
+            background: #cccccc;
+        }
+        #image{
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            border: 1px black solid;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<!--引入jquery-->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+<body>
+<form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form">
+    <hr/>
+    <div style="margin: 0 auto;width: 255px;height: 25px">
+        <input type="file" id="chooseImage" name="file" style="border: 1px black solid">
+    </div>
+    <hr/>
+    <!-- 保存用户自定义的背景图片 -->
+    <!-- < img id="previewPic" value='custom' alt="图片" data-address='' title="自定义背景"/> -->
+    <div id="image">
+        <img id="previewPic" value='' width="500px" height="300px"/>
+    </div>
+</form>
+</body>
+<script type="text/javascript">
+    $("#chooseImage").on('change',function () {
+        var filePath = $(this).val();//获取到上传文件的路径
+        var fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase();
+        var src = window.URL.createObjectURL(this.files[0]);//转成可以在本地预览的格式
+
+        if(!fileFormat.match(/.png|.jpg|.gif|.jpeg/) ){
+            alert('上传错误,文件格式必须为：png/jpg/gif/jpeg');
+            event.preventDefault();//阻止继续执行
+        }
+        $("#previewPic").attr('src',src);
+    })
+</script>
+</html>
