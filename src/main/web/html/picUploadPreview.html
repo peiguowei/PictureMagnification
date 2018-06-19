@@ -28,6 +28,8 @@
     <hr/>
     <div style="margin: 0 auto;width: 255px;height: 25px">
         <input type="file" id="chooseImage" name="file" style="border: 1px black solid">
+        <!-- 多选功能 -->
+        <!-- <input type="file" id="chooseImage" name="file" style="border: 1px black solid" multiple="multiple" onchange="onc()" /> -->
     </div>
     <hr/>
     <!-- 保存用户自定义的背景图片 -->
@@ -49,5 +51,12 @@
         }
         $("#previewPic").attr('src',src);
     })
+    // 获取多个图片的名称
+    function onc(){
+		var files = document.getElementById("chooseImage").files;
+		for(var i=0; i< files.length; i++){
+			alert(files[i].name);
+		}	
+	}
 </script>
 </html>
