@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出框</title>
+    <link rel="stylesheet" type="text/css" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/layui/layui.js"></script>
+</head>
+<body>
+<button style="align-content: center" onclick="a()">弹出</button>
+<script>
+    function  a() {
+        layui.use('layer', function() {
+//            layer.prompt({
+//                formType: 2,
+//                value: '初始值',
+//                title: '取消【投资项目】金额',
+//
+//                // move: false,
+//            }, function(value, index, elem){
+//                alert(value); //得到value
+//                layer.close(index);
+//            });
+
+            layer.open({
+                type: 2,
+                title: '测试页',
+                shadeClose: false,// 点击遮罩位置 弹出不关闭
+                shade: 0.8, // 遮罩层 透明度
+                area: ['380px', '90%'],
+                content: '../html/demo.html', //iframe的url
+                resize: false, // 是否允许拉伸
+                move: false, // 禁止标题栏拖拽
+                btn: ['按钮一', '按钮二', '按钮三'],
+                yes: function(index, layero){
+                    var index1 = layer.load(1);//加载层
+                    //这时如果你也还想执行yes回调，1成功 2 失败
+                    layer.alert('有了回调',{icon: 1},function(index2){
+                        layer.close(index1); // 手动关闭
+                        layer.msg(index);
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    });
+                }
+                ,btn2: function(index, layero){
+                    //按钮【按钮二】的回调
+                    // return false // 开启该代码可禁止点击该按钮关闭
+                }
+                ,btn3: function(index, layero){
+                    //按钮【按钮三】的回调
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+                ,cancel: function(){
+                    //右上角关闭回调
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+            });
+        })
+    }
+
+</script>
+</body>
+</html>
