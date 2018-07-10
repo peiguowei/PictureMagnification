@@ -1,4 +1,7 @@
-# PictureMagnification
-1、JS实现图片放大镜。
-2、JS实现图片上传即刻预览。
+## PlugApp
+
+- js实现放大镜
+- Js图片上传即使预览
+- zTree Demo
+- layui Demo
 
