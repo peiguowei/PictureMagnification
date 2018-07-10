@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>树结构使用</title>
     <!--https://blog.csdn.net/my98800/article/details/78463975-->
-    <link rel="stylesheet" type="text/css" href="../static/zTree/demo.css">
+    <!--<link rel="stylesheet" type="text/css" href="../static/zTree/demo.css">--> <!--小样-->
     <link rel="stylesheet" type="text/css" href="../static/zTree/zTreeStyle/zTreeStyle.css">
     <script type="text/javascript" src="../static/zTree/js/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="../static/zTree/js/jquery.ztree.core.js"></script>
@@ -31,25 +31,71 @@
         };
         var zTree;
         var treeNodes =[
-            {"id":1,"pId":0,"name":"裴国伟","icon":"../static/zTree/zTreeStyle/img/diy/9.png"},
-            {"id":2,"pId":1,"name":"001","icon":"../static/zTree/zTreeStyle/img/diy/5.png"},
+            {"id":1,"pId":0,"name":"demo"},
+            {"id":2,"pId":1,"name":"001"},
             {"id":3,"pId":1,"name":"002"},
             {"id":4,"pId":1,"name":"003"},
             {"id":5,"pId":2,"name":"101"},
             {"id":6,"pId":2,"name":"102"},
             {"id":7,"pId":0,"name":"200","icon":"../static/zTree/zTreeStyle/img/diy/5.png"},
             {"id":8,"pId":0,"name":"300","open":true},// open true 默认展开
-            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>裴子</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":1,"pId":0,"name":"demo"},
+            {"id":2,"pId":1,"name":"001"},
+            {"id":3,"pId":1,"name":"002"},
+            {"id":4,"pId":1,"name":"003"},
+            {"id":5,"pId":2,"name":"101"},
+            {"id":6,"pId":2,"name":"102"},
+            {"id":7,"pId":0,"name":"200","icon":"../static/zTree/zTreeStyle/img/diy/5.png"},
+            {"id":8,"pId":0,"name":"300","open":true},// open true 默认展开
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":1,"pId":0,"name":"demo"},
+            {"id":2,"pId":1,"name":"001"},
+            {"id":3,"pId":1,"name":"002"},
+            {"id":4,"pId":1,"name":"003"},
+            {"id":5,"pId":2,"name":"101"},
+            {"id":6,"pId":2,"name":"102"},
+            {"id":7,"pId":0,"name":"200","icon":"../static/zTree/zTreeStyle/img/diy/5.png"},
+            {"id":8,"pId":0,"name":"300","open":true},// open true 默认展开
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":9,"pId":8,"name":"<span style='font-size: 16px'>demo2</span>"},
+            {"id":1,"pId":0,"name":"demo"},
+            {"id":2,"pId":1,"name":"001"},
+            {"id":3,"pId":1,"name":"002"},
+            {"id":4,"pId":1,"name":"003"},
+            {"id":5,"pId":2,"name":"101"},
+            {"id":6,"pId":2,"name":"102"}
         ];
         
         $(document).ready(function () {
             zTree =$.fn.zTree.init($("#tree"), setting, treeNodes);
         })
     </script>
+    <style>
+        ul.ztree {
+             margin-top: 10px;
+             border: 1px solid #617775;
+             background: #f0f6e4;
+             width: 220px;
+             height: 360px;
+             overflow-y: scroll;
+             overflow-x: auto;
+         }
+        .ztree {
+            margin: 0;
+            padding: 5px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
 <div align="center">
-    <ul id="tree" class="ztree" style="width:300px;overflow:auto;"></ul>
+    <ul id="tree" class="ztree" style="width:auto;overflow:auto;"></ul>
 </div>
 </body>
 </html>

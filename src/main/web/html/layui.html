@@ -7,10 +7,13 @@
     <script type="text/javascript" src="../static/layui/layui.js"></script>
 </head>
 <body>
-<button style="align-content: center" onclick="a()">弹出</button>
+<div align="center" style="padding-top: 15px">
+    <button style="align-content: center" onclick="a()">弹出</button>
+</div>
 <script>
     function  a() {
         layui.use('layer', function() {
+            // 可输入弹窗
 //            layer.prompt({
 //                formType: 2,
 //                value: '初始值',
@@ -37,7 +40,7 @@
                     //这时如果你也还想执行yes回调，1成功 2 失败
                     layer.alert('有了回调',{icon: 1},function(index2){
                         layer.close(index1); // 手动关闭
-                        layer.msg(index);
+                        layer.msg(index); // 提示信息
                         layer.close(index); //如果设定了yes回调，需进行手工关闭
                     });
                 }
