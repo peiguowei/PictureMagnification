@@ -4,4 +4,5 @@
 - Js图片上传即使预览
 - zTree Demo
 - layui Demo
+- JSON查看器
 
